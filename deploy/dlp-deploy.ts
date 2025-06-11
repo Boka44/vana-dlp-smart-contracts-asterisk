@@ -13,8 +13,8 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const [deployer] = await ethers.getSigners();
 
   const ownerAddress = process.env.OWNER_ADDRESS ?? deployer.address;
-  const trustedForwarder =
-    process.env.TRUSTED_FORWARDER_ADDRESS ?? ethers.ZeroAddress;
+  const trustedForwarder = ethers.ZeroAddress;
+  // process.env.TRUSTED_FORWARDER_ADDRESS ?? ethers.ZeroAddress;
 
   const tokenContractName = "DAT";
   const tokenName =
@@ -113,6 +113,15 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     tokenSymbol,
     deployer.address,
   ]);
+
+  console.log(``);
+  console.log(`**************************************************************`);
+  console.log(`**************************************************************`);
+  console.log(`**************************************************************`);
+  console.log(`********** DLP deployed successfully **********`);
+  console.log(`DLP address: ${dlp.target}`);
+  console.log(`Token address: ${token.target}`);
+  console.log(`**************************************************************`);
 
   return;
 };
